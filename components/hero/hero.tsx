@@ -1,6 +1,6 @@
 import React from "react";
 import HeroData from "../../component-data/hero-data";
-import Image from "next/image";
+// import Image from "next/image";
 
 interface Heroprops {
   title?: HeroData;
@@ -8,27 +8,12 @@ interface Heroprops {
   sectionClass?: HeroData;
   headerClass?: HeroData;
   children?: React.ReactNode;
-  imageSource: HeroData;
+  imageSource?: HeroData;
 }
 
-function Hero({
-  title,
-  copy,
-  sectionClass,
-  children,
-  headerClass,
-  imageSource,
-}: Heroprops) {
+function Hero({ title, copy, sectionClass, children, headerClass }: Heroprops) {
   return (
     <section className={sectionClass}>
-      <Image
-        src={imageSource}
-        alt="Man and boy relaxing by the lake"
-        width={250}
-        height={250}
-        objectFit="contain"
-        //   layout="fill"
-      />
       <h1 className={headerClass}>{title}</h1>
       <p>{copy}</p>
       {children}
