@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Hero from "components/hero/hero";
-import heroData from "components/hero/hero-data";
+import heroData from "component-data/hero-data";
 import Button from "components/button/button";
 
 export default function Home() {

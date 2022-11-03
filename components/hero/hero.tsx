@@ -1,5 +1,5 @@
 import React from "react";
-import HeroData from "./hero-data";
+import HeroData from "../../component-data/hero-data";
 import Image from "next/image";
 
 interface Heroprops {

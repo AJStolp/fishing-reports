@@ -1,12 +1,12 @@
 import React from "react";
 
-interface Heroprops {
+interface Buttonprops {
   copy?: string;
   className?: string;
   children?: React.ReactNode;
 }
 
-function Hero({ copy, className, children }: Heroprops) {
+function Button({ copy, className, children }: Buttonprops) {
   return (
     <>
       <button className={className}>
@@ -17,4 +17,4 @@ function Hero({ copy, className, children }: Heroprops) {
   );
 }
 
-export default Hero;
+export default Button;
