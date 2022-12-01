@@ -1,10 +1,14 @@
 import Head from "next/head";
-import Hero from "components/hero/hero";
-import heroData from "component-data/hero-data";
-import Button from "components/button/button";
-import ButtonData from "component-data/hero-button-data";
+import Hero from "src/components/hero/hero";
+import heroData from "src/component-data/hero-data";
+import Button from "src/components/button/button";
+import ButtonData from "src/component-data/hero-button-data";
+// import useFetchMapData from "src/hooks/api/mapBoxApi/api";
+import Map from "src/components/map/map";
 
-export default function Home() {
+const Home = () => {
+  // const { getMap, mapContainer, lat, lng, zoom } = useFetchMapData();
+
   return (
     <div className="">
       <Head>
@@ -17,22 +21,11 @@ export default function Home() {
       </Head>
 
       <main className="bg-slate-800">
-        <Hero
-          // title={heroData.title}
-          // copy={heroData.copy}
-          sectionClass={heroData.sectionClass}
-          // headerClass={heroData.headerClass}
-          // imageSource={heroData.imageSource}
-        >
-          <h1>
-            <span className="font-semibold text-5xl text-white">
-              {heroData.title}
-            </span>
-          </h1>
-          <p className="text-2xl py-5 max-w-2xl">{heroData.copy}</p>
-          <Button copy={ButtonData.copy} className={ButtonData.className} />
+        <Hero sectionClass={heroData.sectionClass}>
+          <Map />
         </Hero>
       </main>
     </div>
   );
-}
+};
+export default Home;

@@ -1,6 +1,4 @@
-import React from "react";
-import HeroData from "../../component-data/hero-data";
-// import Image from "next/image";
+import HeroData from "src/component-data/hero-data";
 
 interface Heroprops {
   title?: HeroData;
