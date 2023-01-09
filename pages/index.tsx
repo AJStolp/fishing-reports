@@ -1,14 +1,11 @@
+import "mapbox-gl/dist/mapbox-gl.css";
 import Head from "next/head";
 import Hero from "src/components/hero/hero";
 import heroData from "src/component-data/hero-data";
-import Button from "src/components/button/button";
-import ButtonData from "src/component-data/hero-button-data";
-// import useFetchMapData from "src/hooks/api/mapBoxApi/api";
-import Map from "src/components/map/map";
+import Maps from "src/components/map/maps";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const Home = () => {
-  // const { getMap, mapContainer, lat, lng, zoom } = useFetchMapData();
-
   return (
     <div className="">
       <Head>
@@ -22,7 +19,7 @@ const Home = () => {
 
       <main className="bg-slate-800">
         <Hero sectionClass={heroData.sectionClass}>
-          <Map />
+          <Maps />
         </Hero>
       </main>
     </div>

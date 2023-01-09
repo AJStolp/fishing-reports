@@ -1,27 +1,15 @@
-import { useRef, useEffect, useState } from "react";
-import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useRef, useEffect, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiYXN0b2xwIiwiYSI6ImNsYXgzNHgydjBsc3Yzd216M2dpODJlcHgifQ.BqR2hAs34jpZeckwePiuNQ";
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN ?? "";
 
-interface MapDataprops {
-  children?: React.ReactNode;
-  className?: string;
-  tilesetId?: string;
-  zoom?: number;
-  xY?: number;
-  format?: number;
-  mapprefference: any;
-  lat?: number;
-  lng?: number;
-}
-
-const MapData = () => {
+export default function App() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-87);
-  const [lat, setLat] = useState(46);
-  const [zoom, setZoom] = useState(5);
+  const [lng, setLng] = useState(-87.9);
+  const [lat, setLat] = useState(45.1);
+  const [zoom, setZoom] = useState(6);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -33,11 +21,21 @@ const MapData = () => {
     });
   });
 
+  useEffect(() => {
+    if (!map.current) return; // wait for map to initialize
+    map.current.on("move", () => {
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
+    });
+  });
+
   return (
     <div>
-      <div ref={mapContainer} className="h-screen w-screen" />
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
+      <div ref={mapContainer} className="map-container" />
     </div>
   );
-};
-
-export default MapData;
+}
